@@ -1,38 +1,73 @@
-.App {
+.app {
+  font-family: sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.products-layout{
+  margin: 2%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.brand-icon{
+  max-width: 100%;
+  max-height: 100%;
+  width: 112px;
+  height: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card-layout{
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 10%);
+  padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.product-image{
+  max-width: 100%;
+  max-height: 100%;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slick-container{
+  margin: 0 0 20px 0;
+}
+
+.product-price{
+  color: rgba(0,0,0,.38);
+  text-decoration: line-through;
+}
+
+.discounted-price{
+  color: #f37021;
+  font-weight: bold;
+}
+
+.product-name {
+  display: block;/* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  height: 3.6em;
+  max-height: 3.6em;
+  line-height: 1.8em;
+}
+
+.discount-percentage{
+  padding: 0 4px;
+  border-radius: 8px;
+  color: #ed1c24;
+  margin-left: 2px;
+  background-color: #f9b9bc;
+}
+
+.button-wrapper{
+  padding: 5px;
+}
+
+.rating-count {
+  color: rgba(0, 0, 0, 0.38);
+  margin-left: 4px;
+  margin-top: 2px;
 }
