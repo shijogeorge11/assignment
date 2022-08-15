@@ -40,7 +40,7 @@ function ProductCard(props) {
             <div className="slick-container">
                 <Slider {...carouselOptions}>
                     {product["images"].map((item, index) => (
-                        <div className="product-img"><img className="product-image" src={item} alt="product" /></div>
+                        <div key={index} className="product-img"><img className="product-image" src={item} alt="product" /></div>
                     ))}
                 </Slider>
             </div>
