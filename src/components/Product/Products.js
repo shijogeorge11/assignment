@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import useProductSearch from "../../service/productsSearch";
 import Skeleton from "../../skeleton/Skeleton";
 import ProductCard from "../ProductCard/ProductCard";
+import Error from "../Error/Error";
 
 
 function Products(props) {
@@ -33,7 +34,7 @@ function Products(props) {
             !loading && products && products.length > 0 ?
               products.map((product, index) => {
                 return (
-                  <Col>
+                  <Col key={index}>
                     <ProductCard productData={product} productIndex={index}
                       productCount={products.length}
                       loading={loading}
@@ -46,18 +47,20 @@ function Products(props) {
 
           {
             loading
-              ? Array.from(Array(24).keys()).map(i => {
+              ? Array.from(Array(24).keys()).map((i, k) => {
                 return (
-                  <Col>
+                  <Col key={k}>
                     <Skeleton />
                   </Col>
                 );
               })
               : ""
           }
-
-
         </Row>
+
+        {
+          error ? <Error /> : ""
+        }
       </div>
     </>
 

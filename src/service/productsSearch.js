@@ -34,6 +34,7 @@ export default function useProductSearch(query, pageNumber) {
                 if (axios.isCancel(e))
                     return
                 setError(true);
+                setLoading(false);
             })
         return () => controller.abort();
     }, [query, pageNumber]);

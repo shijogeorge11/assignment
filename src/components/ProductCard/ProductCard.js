@@ -9,6 +9,7 @@ function ProductCard(props) {
     const product = props["productData"];
     const index = props["productIndex"];
     const productCount = props["productCount"];
+    const loading = props["loading"];
 
     const carouselOptions = {
         dots: true,
@@ -21,7 +22,7 @@ function ProductCard(props) {
 
     const observer = useRef();
     const lastProductObserver = useCallback(node => {
-        if (props.loading) return;
+        if (loading) return;
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) {
@@ -29,9 +30,9 @@ function ProductCard(props) {
             }
         });
         if (node) observer.current.observe(node);
-    }, [props.loading]);
+    }, [loading]);
 
-    function addToCart(event){
+    function addToCart(event) {
         alert("Product Added to Cart");
     }
 
@@ -62,11 +63,16 @@ function ProductCard(props) {
                 <img src={locationIcon} alt="location" />
                 <span>{product["location"]}</span>
             </div>
-            <div className="rating-wrapper">
-                <img src={ratingIcon} alt="rating" />
-                <span>{product["review"]["absoluteRating"]}</span>
-                <span className="rating-count">{`(${product["review"]["count"]})`}</span>
-            </div>
+            {
+                product["review"]["absoluteRating"]
+                    ? <div className="rating-wrapper">
+                        <img src={ratingIcon} alt="rating" />
+                        <span>{product["review"]["absoluteRating"]}</span>
+                        <span className="rating-count">{`(${product["review"]["count"]})`}</span>
+                    </div>
+                    : ""
+            }
+
             <div className="button-wrapper">
                 {productCount === index + 1
                     ? <Button ref={lastProductObserver} variant="primary" className="cart-button" onClick={addToCart}>Add to cart</Button>
